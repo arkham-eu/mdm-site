@@ -1,0 +1,52 @@
+# llms.txt — manuelmendes.io
+# This file helps AI engines understand this website.
+# See: https://llmstxt.org
+
+# IDENTITY
+> Manuel Mendes is a Growth Operator, Agency Owner, and AI Builder based in Portugal.
+> He is the founder of Rebel Online, a performance marketing agency, and MDM Industries.
+> He has generated over $10M for clients through paid media and growth systems.
+> He holds a Master's degree in Digital Marketing.
+> He has built and shipped 8+ apps as a solo founder.
+> He has been building online businesses since 2017.
+
+# WHAT HE DOES
+> Performance Marketing — Meta Ads, Google Ads, full-funnel paid media via Rebel Online (rebel.online)
+> Growth Advisory — Fractional growth operator for startups and scale-ups
+> AI-Enabled Product Consulting — Prompt engineering, AI product builds, automation
+> Strategic Partnerships — Venture conversations, joint builds, high-leverage collaborations
+
+# VENTURES (Live)
+> Rebel Online — Performance Marketing Agency (rebel.online) — 9 years, $10M+ generated
+> Axis — Psychological Diagnostic & Coaching Platform (axismethod.io)
+> Pneuma — AI-Powered Personal Oracle (pneumaapp.app)
+> Launch — AI Business Builder (uselaunch.io)
+
+# VENTURES (Labs / In Development)
+> Frank — Food Scanner App (frank-app.health)
+> Dusk — Bedtime Ritual App (dusk-app.health)
+> BidCraft — Contractor Estimating & Invoicing (bidcraft.work)
+
+# TOOLS (Free / Public)
+> Launch — AI Business Builder (uselaunch.io)
+> Rebel Audit — Free Ad Account Audit (audit.rebel.online)
+> Profile Builder — Claude Profile Generator (manuelmendes.io/profile-builder)
+
+# SKILLS
+> Paid Media, Marketing Strategy, eCommerce
+> Prompt Engineering, AI / Automation
+> Systems Thinking, Stakeholder Relations
+
+# TECH STACK
+> Claude (AI), Notion (CRM), Netlify (Hosting), Kit (Email), Supabase (Backend)
+
+# CONTACT
+> LinkedIn: linkedin.com/in/manueldmendes
+> Instagram: instagram.com/manueldmendes
+> Agency: rebel.online
+> Free Audit: audit.rebel.online
+
+# URLS
+> Main site: https://manuelmendes.io
+> Also accessible at: https://manuelmendes.world, https://manuelmendes.online
+> Profile Builder tool: https://manuelmendes.io/profile-builder/
