@@ -7,3 +7,27 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "https://manuelmendes.world/*"
+  to = "https://manuelmendes.io/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.manuelmendes.world/*"
+  to = "https://manuelmendes.io/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://manuelmendes.online/*"
+  to = "https://manuelmendes.io/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.manuelmendes.online/*"
+  to = "https://manuelmendes.io/:splat"
+  status = 301
+  force = true
