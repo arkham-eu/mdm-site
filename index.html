@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MDM Industries â Manuel Mendes</title>
+<meta name="description" content="Growth Operator Â· Agency Owner Â· AI Builder. $10M+ generated for clients via paid media & growth systems.">
+<meta name="theme-color" content="#0a0a08">
+<meta property="og:title" content="MDM Industries â Manuel Mendes">
+<meta property="og:description" content="Growth Operator Â· Agency Owner Â· AI Builder. Built ventures. Runs Rebel Online.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>â¡</text></svg>">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>html,body{margin:0;padding:0;background:#0a0a08;overflow:hidden;}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// CONTENT LAYER â edit text, links, and labels here
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+
+const SITE = {
+  brand: "MDM INDUSTRIES",
+  tagline: "OPERATOR TERMINAL",
+  owner: "Manuel Mendes",
+  role: "Growth Operator Â· Agency Owner Â· AI Builder",
+  proof: "Built ventures. Runs Rebel Online. $10M+ generated for clients via paid media & growth systems.",
+  established: "EST. 2017",
+  sector: "ONLINE",
+  version: "v4.3.0",
+};
+
+const BOOT_LINES = [
+  "MDM SYSTEMS (TM) TERMLINA PROTOCOL",
+  ">> ******** [ACCEPTED]",
+  "",
+  "WELCOME, OPERATOR.",
+  `LOADING ${SITE.version}...`,
+  "",
+  "STATUS: ALL SYSTEMS NOMINAL",
+];
+
+const SECRET_CODE = "vault";
+const GAME_CODE = "nuke";
+
+const COMMANDS = {
+  "work": "services", "hire": "services", "services": "services", "agency": "services", "growth": "services",
+  "ventures": "ventures", "projects": "ventures", "apps": "ventures", "portfolio": "ventures",
+  "about": "about", "dossier": "about", "profile": "about", "bio": "about", "me": "about",
+  "contact": "contact", "signal": "contact", "socials": "contact",
+  "tools": "tools", "launch": "tools", "audit": "tools", "profile builder": "tools",
+  "stats": "stats", "perks": "stats", "special": "stats", "skills": "stats",
+  "stack": "stack", "tech": "stack", "tech stack": "stack",
+  "labs": "labs", "experiments": "labs",
+  "back": "main", "home": "main", "menu": "main", "main": "main",
+};
+
+function matchCommand(val) {
+  const v = val.trim().toLowerCase();
+  if (COMMANDS[v]) return COMMANDS[v];
+  for (const [cmd, target] of Object.entries(COMMANDS)) {
+    if (v.includes(cmd) || cmd.includes(v)) return target;
+  }
+  return null;
+}
+
+// Line type: { t: string, link?: string, heading?: bool, dim?: bool, accent?: bool }
+const SECTIONS = {
+  main: {
+    primary: [
+      { key: "1", label: "WORK WITH ME", target: "services" },
+      { key: "2", label: "VENTURES", target: "ventures" },
+      { key: "3", label: "ABOUT", target: "about" },
+      { key: "4", label: "CONTACT", target: "contact" },
+    ],
+    secondary: [
+      { key: "5", label: "TOOLS", target: "tools" },
+      { key: "6", label: "STATS & PERKS", target: "stats" },
+      { key: "7", label: "TECH STACK", target: "stack" },
+      { key: "8", label: "LABS", target: "labs" },
+    ],
+  },
+
+  services: {
+    header: "WORK WITH ME",
+    sub: "// MISSION BRIEFING",
+    content: [
+      { t: "" },
+      { t: "I help founders and businesses grow through", accent: true },
+      { t: "paid media, AI-powered systems, and sharp strategy.", accent: true },
+      { t: "" },
+      { t: "ââââââââââââââââââââââââââââââââââââââââââ" },
+      { t: "" },
+      { t: "â¸ ENGAGEMENT TYPES", heading: true },
+      { t: "" },
+      { t: "  PERFORMANCE MARKETING" },
+      { t: "  Meta Ads, Google Ads, full-funnel paid media." },
+      { t: "  Strategy, execution, and scaling â via Rebel Online." },
+      { t: "  â rebel.online", link: "https://rebel.online" },
+      { t: "" },
+      { t: "  GROWTH ADVISORY" },
+      { t: "  Fractional growth operator for startups and" },
+      { t: "  scale-ups. Systems, strategy, accountability." },
+      { t: "" },
+      { t: "  AI-ENABLED PRODUCT CONSULTING" },
+      { t: "  From prompt engineering to full product builds." },
+      { t: "  I ship AI-powered tools that solve real problems." },
+      { t: "" },
+      { t: "  STRATEGIC PARTNERSHIPS" },
+      { t: "  Open to venture conversations, joint builds," },
+      { t: "  and high-leverage collaborations." },
+      { t: "" },
+      { t: "ââââââââââââââââââââââââââââââââââââââââââ" },
+      { t: "" },
+      { t: "â¸ NEXT STEP", heading: true },
+      { t: "" },
+      { t: "  Ready to talk? Reach out on LinkedIn.", accent: true },
+      { t: "  â linkedin.com/manueldmendes", link: "https://linkedin.com/manueldmendes" },
+      { t: "" },
+      { t: "  Or get a free ad account audit now.", accent: true },
+      { t: "  â audit.rebel.online", link: "https://audit.rebel.online" },
+    ],
+  },
+
+  ventures: {
+    header: "VENTURES",
+    sub: "// FEATURED OPERATIONS",
+    content: [
+      { t: "" },
+      { t: "â¸ LIVE & OPERATIONAL", heading: true },
+      { t: "" },
+      { t: "  â  REBEL ONLINE â Performance Marketing Agency" },
+      { t: "    9 years. $10M+ generated for clients.", dim: true },
+      { t: "    â rebel.online", link: "https://rebel.online" },
+      { t: "" },
+      { t: "  â  AXIS â Coaching Platform" },
+      { t: "    86-question diagnostic. 90-day AI-guided plan.", dim: true },
+      { t: "    â axismethod.io", link: "https://axismethod.io" },
+      { t: "" },
+      { t: "  â  PNEUMA â AI-Powered Personal Oracle" },
+      { t: "    Astrology & numerology, reimagined with AI.", dim: true },
+      { t: "    â pneumaapp.app", link: "https://pneumaapp.app" },
+      { t: "" },
+      { t: "  â  LAUNCH â AI Business Builder" },
+      { t: "    Validate and build your business idea with AI.", dim: true },
+      { t: "    â uselaunch.io", link: "https://uselaunch.io" },
+      { t: "" },
+      { t: "ââââââââââââââââââââââââââââââââââââââââââ" },
+      { t: "" },
+      { t: "  More experiments in [8] LABS.", dim: true },
+    ],
+  },
+
+  about: {
+    header: "ABOUT",
+    sub: "// OPERATOR DOSSIER",
+    content: [
+      { t: "" },
+      { t: "Manuel Mendes.", accent: true },
+      { t: "@manueldmendes", link: "https://instagram.com/manueldmendes" },
+      { t: "" },
+      { t: "Started building at 18 â eCommerce, paid media," },
+      { t: "Shopify, Google Ads, Meta. Never stopped." },
+      { t: "" },
+      { t: "Founded Rebel Online 9 years ago. Since then:" },
+      { t: "  â $10M+ generated for clients" },
+      { t: "  â Master's in Digital Marketing" },
+      { t: "  â Built and shipped 8+ apps as a solo founder" },
+      { t: "  â Advisory work across marketing & growth" },
+      { t: "" },
+      { t: "REACH OUT IF:", heading: true },
+      { t: "  â You need growth and paid media that works" },
+      { t: "  â You want to build something together" },
+      { t: "  â You're exploring AI-powered products" },
+    ],
+  },
+
+  contact: {
+    header: "CONTACT",
+    sub: "// SIGNAL BEACON",
+    content: [
+      { t: "" },
+      { t: "â¸ NEED GROWTH HELP?", heading: true },
+      { t: "  Start with a free audit or visit the agency." },
+      { t: "  â audit.rebel.online", link: "https://audit.rebel.online" },
+      { t: "  â rebel.online", link: "https://rebel.online" },
+      { t: "" },
+      { t: "â¸ WANT TO COLLABORATE?", heading: true },
+      { t: "  Partnerships, ventures, or advisory â DM me." },
+      { t: "  â LinkedIn", link: "https://linkedin.com/manueldmendes" },
+      { t: "" },
+      { t: "â¸ FOLLOW THE JOURNEY", heading: true },
+      { t: "  â Instagram @manueldmendes", link: "https://instagram.com/manueldmendes" },
+      { t: "" },
+      { t: "ââââââââââââââââââââââââââââââââââââââââââ" },
+      { t: "Status: ONLINE Â· Response: < 24h", dim: true },
+    ],
+  },
+
+  tools: {
+    header: "TOOLS",
+    sub: "// PUBLIC ACCESS",
+    content: [
+      { t: "" },
+      { t: "Free tools for founders and operators." },
+      { t: "" },
+      { t: "  â  LAUNCH â AI Business Builder" },
+      { t: "    Validate your idea. Build your plan.", dim: true },
+      { t: "    â uselaunch.io", link: "https://uselaunch.io" },
+      { t: "" },
+      { t: "  â  REBEL AUDIT â Free Ad Account Audit" },
+      { t: "    Instant AI analysis of your ad performance.", dim: true },
+      { t: "    â audit.rebel.online", link: "https://audit.rebel.online" },
+      { t: "" },
+      { t: "  â  PROFILE BUILDER â Claude Profile Generator" },
+      { t: "    Build your perfect Claude memory profile.", dim: true },
+      { t: "    â Profile Builder", link: "/profile-builder" },
+      { t: "" },
+      { t: "More tools incoming.", dim: true },
+    ],
+  },
+
+  stats: {
+    header: "STATS & PERKS",
+    sub: "// S.P.E.C.I.A.L. ASSESSMENT",
+    content: [
+      { t: "" },
+      { t: "S â STRATEGY ........... ââââââââââ  8" },
+      { t: "P â PERSISTENCE ........ ââââââââââ  9" },
+      { t: "E â EXECUTION .......... ââââââââââ  8" },
+      { t: "C â CREATIVITY ......... ââââââââââ  7" },
+      { t: "I â INTUITION .......... ââââââââââ  8" },
+      { t: "A â ADAPTABILITY ....... ââââââââââ  7" },
+      { t: "L â LEVERAGE ........... ââââââââââ  6" },
+      { t: "" },
+      { t: "LEVEL 32 Â· XP: 14 years Â· KARMA: Chaotic Good", dim: true },
+      { t: "" },
+      { t: "ââââââââââââââââââââââââââââââââââââââââââ" },
+      { t: "" },
+      { t: "â¸ SKILLS", heading: true },
+      { t: "  Paid Media Â· Marketing Strategy Â· eCommerce" },
+      { t: "  Prompt Engineering Â· AI / Automation" },
+      { t: "  Systems Thinking Â· Stakeholder Relations" },
+      { t: "" },
+      { t: "â¸ PERKS", heading: true },
+      { t: "  [Vibe Coder] Ship apps without writing code" },
+      { t: "  [Iron Will] Bootstrapped for 9 years straight" },
+      { t: "  [Quick Learner] Master new tools in hours" },
+      { t: "  [Lone Wanderer] Solo founder damage bonus" },
+      { t: "  [Silver Tongue] Close deals others can't" },
+    ],
+  },
+
+  stack: {
+    header: "TECH STACK",
+    sub: "// TOOLS OF THE TRADE",
+    content: [
+      { t: "" },
+      { t: "  â  CLAUDE â AI co-pilot for everything" },
+      { t: "    â claude.ai", link: "https://claude.ai" },
+      { t: "" },
+      { t: "  â  NOTION â Command center & CRM" },
+      { t: "    â notion.so", link: "https://notion.so" },
+      { t: "" },
+      { t: "  â  NETLIFY â Hosting & edge functions" },
+      { t: "    â netlify.com", link: "https://netlify.com" },
+      { t: "" },
+      { t: "  â  KIT â Email marketing & sequences" },
+      { t: "    â Try Kit", link: "https://partners.kit.com/to18m6plgqs0" },
+      { t: "" },
+      { t: "  â  SUPABASE â Backend & database" },
+      { t: "    â supabase.com", link: "https://supabase.com" },
+      { t: "" },
+      { t: "Stack evolves. This page stays current.", dim: true },
+    ],
+  },
+
+  labs: {
+    header: "LABS",
+    sub: "// EXPERIMENTS & IN-DEVELOPMENT",
+    content: [
+      { t: "" },
+      { t: "Projects in various stages of development." },
+      { t: "Shipping fast. Breaking things on purpose.", dim: true },
+      { t: "" },
+      { t: "  â  FRANK â Food Scanner App" },
+      { t: "    â frank-app.health", link: "https://frank-app.health" },
+      { t: "" },
+      { t: "  â  DUSK â Bedtime Ritual App" },
+      { t: "    â dusk-app.health", link: "https://dusk-app.health" },
+      { t: "" },
+      { t: "  â  BIDCRAFT â Contractor Estimating & Invoicing" },
+      { t: "    â bidcraft.work", link: "https://bidcraft.work" },
+      { t: "" },
+      { t: "  â  DREAD â AI Horror Story Generator" },
+      { t: "    â dread-app.com", link: "https://dread-app.com" },
+      { t: "" },
+      { t: "More experiments always in the pipeline.", dim: true },
+    ],
+  },
+
+  secret: {
+    header: "CLASSIFIED",
+    sub: "// PERSONNEL FILE",
+    content: [
+      { t: "" },
+      { t: "ââââââââââââââââââââââââââââââââââââââ" },
+      { t: "â  CLEARANCE LEVEL: OVERSEER         â" },
+      { t: "ââââââââââââââââââââââââââââââââââââââ" },
+      { t: "" },
+      { t: "You found it. Not many do.", accent: true },
+      { t: "" },
+      { t: "This terminal was built by someone who" },
+      { t: "believes the best things are hidden in" },
+      { t: "plain sight â like a good easter egg," },
+      { t: "or a business opportunity everyone else" },
+      { t: "is too busy to notice." },
+      { t: "" },
+      { t: "If you're reading this, you're probably" },
+      { t: "the kind of person who explores every" },
+      { t: "corner of the map before doing the main" },
+      { t: "quest. We'd get along." },
+      { t: "" },
+      { t: "DM me \"Vault Dweller\" on LinkedIn", accent: true },
+      { t: "and I'll know you're real." },
+      { t: "  â linkedin.com/manueldmendes", link: "https://linkedin.com/manueldmendes" },
+      { t: "" },
+      { t: "\"Finding this was not an accident.\"", dim: true },
+    ],
+  },
+};
+
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// TYPEWRITER HOOK â optimized with requestAnimationFrame
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+
+function useTypewriter(lines, speed = 12, enabled = true) {
+  const [displayed, setDisplayed] = useState([]);
+  const [done, setDone] = useState(false);
+  const cancelRef = useRef(false);
+  const skipRef = useRef(false);
+  const skip = useCallback(() => { skipRef.current = true; }, []);
+
+  useEffect(() => {
+    if (!enabled) { setDisplayed([]); setDone(false); return; }
+    setDisplayed([]); setDone(false);
+    cancelRef.current = false; skipRef.current = false;
+    let animId, li = 0, ci = 0, last = 0;
+    const buf = [];
+    function step(ts) {
+      if (cancelRef.current) return;
+      if (skipRef.current) { setDisplayed([...lines]); setDone(true); return; }
+      if (!last) last = ts;
+      if (ts - last >= speed) {
+        last = ts;
+        if (li < lines.length) {
+          const cur = lines[li];
+          if (!cur || cur.length === 0) { buf[li] = ""; li++; ci = 0; }
+          else if (ci < cur.length) { buf[li] = cur.substring(0, ++ci); }
+          else { li++; ci = 0; }
+          setDisplayed([...buf]);
+        } else { setDone(true); return; }
+      }
+      animId = requestAnimationFrame(step);
+    }
+    animId = requestAnimationFrame(step);
+    return () => { cancelRef.current = true; if (animId) cancelAnimationFrame(animId); };
+  }, [lines, speed, enabled]);
+  return { displayed, done, skip };
+}
+
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// WASTELAND RUNNER â fully imperative canvas, no React re-renders
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+
+const GW = 600, GH = 200, GGY = 160, GPW = 24, GPH = 32;
+
+function WastelandRunner({ onExit }) {
+  const canvasRef = useRef(null);
+  const stRef = useRef(null);
+
+  useEffect(() => {
+    const c = canvasRef.current; if (!c) return;
+    const ctx = c.getContext("2d");
+    const OBS = [
+      { w:16,h:18,art:["âââ"," â "]},{ w:20,h:24,art:["ââââ","ââââ","ââââ"]},
+      { w:14,h:34,art:["  â ","âââ"," ââ"," â "," â "]},{ w:22,h:20,art:[" ââââ","ââââââ"," âââ "]},
+    ];
+    const RF = [[" â ","â±ââ²","â± â²"],[" â ","â±ââ²","â â"]];
+    const JF = [" â ","â±ââ²"," ^ "], DF = ["   "," ââ","â±ââ²"], XF = [" â ","/â\\","/ \\"];
+
+    const s = {
+      p:{x:60,y:GGY-GPH,vy:0,j:false,d:false}, obs:[], fr:0, sp:4, sc:0, hi:0,
+      over:false, go:false, st:0, go2:0, pts:[]
+    };
+    stRef.current = s;
+
+    function dt(t,x,y,sz=12,a=1){ctx.globalAlpha=a;ctx.font=`${sz}px 'Share Tech Mono',monospace`;ctx.fillText(t,x,y);ctx.globalAlpha=1;}
+
+    let aid;
+    function loop() {
+      ctx.clearRect(0,0,GW,GH);ctx.fillStyle="#0a0a08";ctx.fillRect(0,0,GW,GH);ctx.fillStyle="#33FF00";
+      s.go2=(s.go2+(s.go&&!s.over?s.sp:0))%8;
+      for(let x=-s.go2;x<GW;x+=8)dt("â",x,GGY+10,10,0.3);
+      for(let x=-s.go2*.5;x<GW;x+=30+Math.sin(x)*10)dt("Â·",x,GGY+20,8,0.1);
+      for(let x=-(s.fr*.3%120);x<GW+60;x+=120)dt("â",x,30,40,0.07);
+
+      if(s.go&&!s.over){
+        s.fr++;s.sc=Math.floor(s.fr/6);s.sp=4+Math.floor(s.fr/300)*.5;
+        s.st--;
+        if(s.st<=0){const t=OBS[Math.floor(Math.random()*OBS.length)];s.obs.push({x:GW+20,t});s.st=70+Math.random()*80-Math.min(s.sp*3,30);}
+        s.obs=s.obs.filter(o=>o.x>-50);s.obs.forEach(o=>{o.x-=s.sp;});
+        const p=s.p;
+        if(p.j){p.vy+=.65;p.y+=p.vy;if(p.y>=GGY-GPH){p.y=GGY-GPH;p.vy=0;p.j=false;}}
+        const pH=p.d?GPH*.5:GPH,pY=p.d?p.y+GPH*.5:p.y;
+        for(const o of s.obs){const oY=GGY-o.t.h;if(p.x+GPW>o.x+4&&p.x<o.x+o.t.w-4&&pY+pH>oY+4&&pY<oY+o.t.h){
+          s.over=true;s.hi=Math.max(s.hi,s.sc);
+          for(let i=0;i<12;i++)s.pts.push({x:p.x+GPW/2,y:p.y+GPH/2,vx:(Math.random()-.5)*6,vy:(Math.random()-.8)*5,l:30+Math.random()*20,c:["*","Ã","Â·","âª","â"][Math.floor(Math.random()*5)]});
+        }}
+        s.pts=s.pts.filter(p=>p.l>0);s.pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.15;p.l--;});
+      }
+      s.pts.forEach(p=>{dt(p.c,p.x,p.y,10,p.l/40);});
+      ctx.fillStyle="#33FF00";
+      s.obs.forEach(o=>{const oY=GGY-o.t.h;o.t.art.forEach((l,i)=>{dt(l,o.x,oY+i*10+10,10);});});
+      const p=s.p;let f;
+      if(s.over)f=XF;else if(p.j)f=JF;else if(p.d)f=DF;else f=RF[Math.floor(s.fr/8)%2];
+      const dy=p.d?p.y+10:p.y;
+      ctx.shadowColor="#33FF00";ctx.shadowBlur=8;
+      f.forEach((l,i)=>{dt(l,p.x,dy+i*11+10,12);});ctx.shadowBlur=0;
+      dt(`SCORE: ${String(s.sc).padStart(5,"0")}`,GW-140,20,12);
+      if(s.hi>0)dt(`HI: ${String(s.hi).padStart(5,"0")}`,GW-140,36,10,0.5);
+      dt(`RAD: ${Math.min(999,Math.floor(s.fr/10))}`,10,20,10,0.4);
+      if(!s.go){
+        dt("WASTELAND RUNNER",GW/2-80,60,16);dt("SPACE / TAP to jump",GW/2-75,85,11,0.6);
+        dt("DOWN to duck Â· ESC to exit",GW/2-100,100,11,0.4);
+        const idle=RF[Math.floor(Date.now()/400)%2];idle.forEach((l,i)=>{dt(l,p.x,p.y+i*11+10,12);});
+      }
+      if(s.over){
+        const fl=Math.sin(Date.now()/100)>0?1:0.7;
+        dt(">> SYSTEM FAILURE <<",GW/2-90,70,16,fl);dt("SPACE to reboot Â· ESC to exit",GW/2-115,95,11,0.5);
+      }
+      aid=requestAnimationFrame(loop);
+    }
+    aid=requestAnimationFrame(loop);
+    return()=>{if(aid)cancelAnimationFrame(aid);};
+  },[]);
+
+  useEffect(()=>{
+    function act(){
+      const s=stRef.current;if(!s)return;
+      if(s.over){s.p={x:60,y:GGY-GPH,vy:0,j:false,d:false};s.obs=[];s.fr=0;s.sp=4;s.sc=0;s.over=false;s.go=true;s.st=0;s.pts=[];return;}
+      if(!s.go){s.go=true;return;}
+      if(!s.p.j){s.p.vy=-11;s.p.j=true;}
+    }
+    function dk(d){const s=stRef.current;if(s&&s.go&&!s.over)s.p.d=d;}
+    function kd(e){if(e.code==="Space"||e.code==="ArrowUp"){e.preventDefault();act();}if(e.code==="ArrowDown"){e.preventDefault();dk(true);}if(e.code==="Escape")onExit();}
+    function ku(e){if(e.code==="ArrowDown")dk(false);}
+    window.addEventListener("keydown",kd);window.addEventListener("keyup",ku);
+    const cv=document.getElementById("gr-canvas");
+    if(cv){cv.addEventListener("click",act);cv.addEventListener("touchstart",(e)=>{e.preventDefault();act();},{passive:false});}
+    return()=>{window.removeEventListener("keydown",kd);window.removeEventListener("keyup",ku);};
+  },[onExit]);
+
+  return(
+    <div style={{position:"fixed",inset:0,zIndex:2000,background:"#0a0a08",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",fontFamily:"'Share Tech Mono',monospace"}}>
+      <div style={{color:"#33FF00",fontSize:10,letterSpacing:2,opacity:0.35,marginBottom:12}}>MDM SYSTEMS â WASTELAND RUNNER v1.0</div>
+      <div style={{border:"1px solid #33FF0022",borderRadius:2,boxShadow:"0 0 30px rgba(0,255,0,0.04)",overflow:"hidden"}}>
+        <canvas id="gr-canvas" ref={canvasRef} width={GW} height={GH} style={{display:"block",maxWidth:"95vw",height:"auto",cursor:"pointer"}}/>
+      </div>
+      <div style={{color:"#33FF00",fontSize:9,letterSpacing:2,opacity:0.25,marginTop:12,textAlign:"center"}}>SPACE/TAP = JUMP Â· DOWN = DUCK Â· ESC = EXIT</div>
+      <div style={{position:"fixed",inset:0,pointerEvents:"none",zIndex:2002,background:"repeating-linear-gradient(0deg,rgba(0,0,0,0.08) 0px,rgba(0,0,0,0.08) 1px,transparent 1px,transparent 3px)"}}/>
+      <div style={{position:"fixed",inset:0,pointerEvents:"none",zIndex:2003,background:"radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,0.5) 100%)"}}/>
+    </div>
+  );
+}
+
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// SHARED UI COMPONENTS
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+
+function CRTOverlay() {
+  return(
+    <>
+      <div className="crt-scan"/>
+      <div className="crt-vignette"/>
+      <div className="crt-glow"/>
+    </>
+  );
+}
+
+function Cursor(){return <span className="tc" aria-hidden="true">â</span>;}
+
+function Line({ text, data, clickable, onClick }) {
+  if (!text && text !== "") return null;
+  const link = data?.link;
+  const cls = [
+    "tl",
+    clickable && "tl-opt",
+    link && !clickable && "tl-link",
+    data?.heading && "tl-heading",
+    data?.dim && "tl-dim",
+    data?.accent && "tl-accent",
+  ].filter(Boolean).join(" ");
+
+  if (link && !clickable) {
+    return <a href={link} target="_blank" rel="noopener noreferrer" className={cls} onClick={e=>e.stopPropagation()} aria-label={text.replace(/â\s*/,"")}>{text}</a>;
+  }
+  if (clickable) {
+    return <button type="button" className={cls} onClick={e=>{e.stopPropagation();onClick?.();}} aria-label={text.replace(/\[\d\]\s*/,"")}>{text}</button>;
+  }
+  return <div className={cls}>{text}</div>;
+}
+
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// MAIN TERMINAL APP
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+
+function Terminal() {
+  const [phase, setPhase] = useState(() => {
+    try { if (sessionStorage.getItem("mdm-booted")) return "menu"; } catch {}
+    return "boot";
+  });
+  const [section, setSection] = useState("main");
+  const [input, setInput] = useState("");
+  const [glitch, setGlitch] = useState(false);
+  const [game, setGame] = useState(false);
+  const scrollRef = useRef(null);
+  const inputRef = useRef(null);
+  const prevLenRef = useRef(0);
+
+  // Build typed lines for current section
+  const { lines, lineData } = useMemo(() => {
+    if (section === "main") {
+      const s = SECTIONS.main;
+      const l = [
+        SITE.brand + " // " + SITE.tagline,
+        SITE.owner + " â " + SITE.role,
+        "",
+        SITE.proof,
+        "",
+        "ââââââââââââââââââââââââââââââââââââââââââ",
+        "",
+        ...s.primary.map(o => `  [${o.key}] ${o.label}`),
+        "",
+        ...s.secondary.map(o => `  [${o.key}] ${o.label}`),
+        "",
+      ];
+      const d = [
+        { t: l[0], heading: true }, { t: l[1] }, { t: "" },
+        { t: l[3], accent: true }, { t: "" },
+        { t: l[5] }, { t: "" },
+        ...s.primary.map(o => ({ t: `  [${o.key}] ${o.label}` })),
+        { t: "" },
+        ...s.secondary.map(o => ({ t: `  [${o.key}] ${o.label}`, dim: true })),
+        { t: "" },
+      ];
+      return { lines: l, lineData: d };
+    }
+    const sec = SECTIONS[section];
+    const raw = [
+      { t: sec.header, heading: true },
+      { t: sec.sub, dim: true },
+      { t: "ââââââââââââââââââââââââââââââââââââââââââ" },
+      ...sec.content,
+      { t: "" },
+      { t: "ââââââââââââââââââââââââââââââââââââââââââ" },
+      { t: "  [0] BACK" },
+      { t: "" },
+    ];
+    return { lines: raw.map(r => r.t), lineData: raw };
+  }, [section]);
+
+  const bootTyper = useTypewriter(BOOT_LINES, 14, phase === "boot");
+  const contentTyper = useTypewriter(lines, 10, phase === "menu");
+
+  // Boot â menu transition
+  useEffect(() => {
+    if (phase === "boot" && bootTyper.done) {
+      const t = setTimeout(() => {
+        setPhase("menu");
+        try { sessionStorage.setItem("mdm-booted", "1"); } catch {}
+      }, 400);
+      return () => clearTimeout(t);
+    }
+  }, [phase, bootTyper.done]);
+
+  // Focus input after navigation
+  useEffect(() => {
+    if (phase === "menu" && !game) setTimeout(() => inputRef.current?.focus(), 80);
+  }, [phase, section, game]);
+
+  // Scroll only on content change
+  useEffect(() => {
+    const d = phase === "boot" ? bootTyper.displayed : contentTyper.displayed;
+    if (d.length !== prevLenRef.current) {
+      prevLenRef.current = d.length;
+      scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
+    }
+  }, [phase, bootTyper.displayed, contentTyper.displayed]);
+
+  const nav = useCallback((target) => {
+    setGlitch(true);
+    setTimeout(() => { setSection(target); setGlitch(false); setInput(""); prevLenRef.current = 0; }, 150);
+  }, []);
+
+  const handleKey = useCallback((e) => {
+    if (e.key !== "Enter") return;
+    const v = input.trim().toLowerCase();
+    if (!v) return;
+    setInput("");
+    if (v === SECRET_CODE) { nav("secret"); return; }
+    if (v === GAME_CODE) { setGame(true); return; }
+    if (section === "main") {
+      const all = [...SECTIONS.main.primary, ...SECTIONS.main.secondary];
+      const opt = all.find(o => o.key === v);
+      if (opt) { nav(opt.target); return; }
+    } else {
+      if (v === "0" || v === "back") { nav("main"); return; }
+    }
+    const t = matchCommand(v);
+    if (t) nav(t);
+  }, [input, section, nav]);
+
+  const handleSkip = useCallback(() => {
+    if (phase === "boot") bootTyper.skip(); else contentTyper.skip();
+  }, [phase, bootTyper, contentTyper]);
+
+  // Resolve which option a line maps to (for click)
+  const getOption = useCallback((text) => {
+    if (section === "main") {
+      const all = [...SECTIONS.main.primary, ...SECTIONS.main.secondary];
+      return all.find(o => text?.includes(`[${o.key}]`));
+    }
+    return null;
+  }, [section]);
+
+  const displayed = phase === "boot" ? bootTyper.displayed : contentTyper.displayed;
+  const isDone = phase === "boot" ? bootTyper.done : contentTyper.done;
+
+  if (game) {
+    return <><FontLoader/><WastelandRunner onExit={() => { setGame(false); setTimeout(() => inputRef.current?.focus(), 80); }}/></>;
+  }
+
+  return (
+    <div onClick={handleSkip} className="crt-flicker term-root" role="main">
+      <FontLoader/>
+      <CRTOverlay/>
+      {glitch && <div className="glitch-flash" aria-hidden="true"/>}
+
+      <div ref={scrollRef} className="term-scroll">
+        {/* Top bar */}
+        <header className="term-header">
+          <span>MDM SYSTEMS UNIFIED OS</span>
+          <span>{SITE.established}</span>
+        </header>
+
+        {/* Content */}
+        <div className="term-content" role="region" aria-label="Terminal content">
+          {displayed.map((text, i) => {
+            const data = phase === "menu" ? lineData[i] : { t: text };
+            const isBack = section !== "main" && text?.includes("[0] BACK");
+            const opt = getOption(text);
+               const clickable = !!(opt || isBack);
+            return (
+              <Line key={`${section}-${i}`} text={text} data={data} clickable={clickable}
+                onClick={() => { if (opt) nav(opt.target); if (isBack) nav("main"); }}
+              />
+            );
+          })}
+          {!isDone && <div className="tl"><Cursor/></div>}
+        </div>
+
+        {/* Input */}
+        {phase === "menu" && isDone && (
+          <div className="term-input-row">
+            <span aria-hidden="true">&gt;&gt;</span>
+            <label htmlFor="term-cmd" className="sr-only">Terminal command input</label>
+            <input
+              id="term-cmd" ref={inputRef} value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={handleKey}
+              onClick={e => e.stopPropagation()}
+              placeholder="type a command..."
+              autoComplete="off" autoCapitalize="off" spellCheck="false"
+              className="term-input"
+              aria-label="Terminal command"
+            />
+            <Cursor/>
+          </div>
+        )}
+      </div>
+
+      {/* Footer */}
+      <footer className="term-footer">
+        <div className="term-footer-inner">
+          <span>{SITE.brand} OS {SITE.version}</span>
+          <span className="term-footer-hint">TAP TO SKIP Â· TYPE TO NAVIGATE</span>
+          <span>SECTOR: {SITE.sector}</span>
+        </div>
+      </footer>
+
+      <style>{`
+        /* ââ Reset & Base ââââââââââââââââââââââââââââââ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0; }
+
+        .term-root {
+          position:fixed;inset:0;
+          background:#0a0a08;
+          font-family:'Share Tech Mono','Courier New',monospace;
+          color:#33FF00;overflow:hidden;cursor:default;
+          -webkit-font-smoothing:antialiased;
+        }
+
+        /* ââ CRT Effects âââââââââââââââââââââââââââââââ */
+        @keyframes crtFlicker {
+          0%{opacity:1}3%{opacity:.94}4%{opacity:1}8%{opacity:.97}9%{opacity:1}
+          45%{opacity:1}46%{opacity:.96}47%{opacity:1}
+          88%{opacity:1}89%{opacity:.92}89.5%{opacity:1}100%{opacity:1}
+        }
+        @keyframes cursorBlink { 0%,49%{opacity:1}50%,100%{opacity:0} }
+        @keyframes glitchIn {
+          0%{opacity:1;transform:translateX(-2px)}
+          25%{opacity:.8;transform:translateX(2px)}
+          50%{opacity:1;transform:translateX(-1px)}
+          100%{opacity:0;transform:none}
+        }
+
+        @keyframes scanDrift { 0%{top:-100%}100%{top:100%} }
+        .crt-flicker { animation: crtFlicker 4s infinite; }
+        .crt-scan {
+          position:fixed;inset:0;pointer-events:none;z-index:1000;
+          background:repeating-linear-gradient(0deg,rgba(0,0,0,0.22) 0px,rgba(0,0,0,0.22) 1px,transparent 1px,transparent 2.5px);
+          mix-blend-mode:multiply;
+        }
+        .crt-scan::after {
+          content:'';position:absolute;left:0;right:0;height:120px;
+          background:linear-gradient(transparent,rgba(51,255,0,0.04),transparent);
+          animation:scanDrift 6s linear infinite;pointer-events:none;
+        }
+        .crt-vignette {
+          position:fixed;inset:0;pointer-events:none;z-index:1001;
+          background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.75) 100%);
+        }
+        .crt-glow {
+          position:fixed;inset:0;pointer-events:none;z-index:1002;
+          box-shadow:inset 0 0 180px rgba(0,255,0,0.06),inset 0 0 60px rgba(0,0,0,0.4);
+        }
+        .glitch-flash {
+          position:fixed;inset:0;z-index:999;
+          background:rgba(51,255,0,0.1);
+          animation:glitchIn .2s ease-out forwards;
+        }
+        .tc { color:#33FF00;font-weight:bold;animation:cursorBlink 1.06s step-end infinite;text-shadow:0 0 10px rgba(51,255,0,0.8); }
+
+        /* ââ Layout âââââââââââââââââââââââââââââââââââââ */
+        .term-scroll {
+          position:relative;z-index:10;
+          max-width:740px;margin:0 auto;
+          padding:36px 32px 140px;
+          height:100vh;height:100dvh;
+          overflow-y:auto;scrollbar-width:none;
+        }
+        .term-scroll::-webkit-scrollbar { display:none; }
+
+        .term-header {
+          display:flex;justify-content:space-between;
+          font-size:11px;letter-spacing:2px;opacity:.5;
+          border-bottom:1px solid #33FF0055;
+          padding-bottom:12px;margin-bottom:24px;
+          text-shadow:0 0 12px rgba(51,255,0,0.6);
+        }
+
+        .term-content { min-height:55vh; }
+
+        /* ââ Lines ââââââââââââââââââââââââââââââââââââââ */
+        .tl {
+          display:block;width:100%;
+          font-size:15px;line-height:1.65;
+          white-space:pre-wrap;word-break:break-word;
+          letter-spacing:.8px;padding:1px 4px;
+          text-shadow:0 0 10px rgba(51,255,0,0.6),0 0 3px rgba(51,255,0,0.4),0 0 30px rgba(51,255,0,0.1);
+          background:none;border:none;color:#33FF00;
+          text-align:left;text-decoration:none;
+          font-family:inherit;cursor:default;
+          border-radius:2px;transition:background .15s;
+        }
+        .tl-heading {
+          color:#44FF22;font-size:16px;
+          text-shadow:0 0 16px rgba(51,255,0,0.8),0 0 4px rgba(51,255,0,0.5),0 0 40px rgba(51,255,0,0.15);
+        }
+        .tl-dim { opacity:.5; }
+        .tl-accent {
+          color:#55FF33;
+          text-shadow:0 0 14px rgba(85,255,51,0.65),0 0 4px rgba(51,255,0,0.4),0 0 35px rgba(51,255,0,0.12);
+        }
+
+        .tl-opt, .tl-link { cursor:pointer;padding:2px 4px; }
+        .tl-opt:hover, .tl-opt:focus-visible,
+        .tl-link:hover, .tl-link:focus-visible {
+          background:rgba(51,255,0,0.16);color:#77FF44;outline:none;
+          text-shadow:0 0 16px rgba(51,255,0,0.8),0 0 40px rgba(51,255,0,0.2);
+        }
+        .tl-link:hover, .tl-link:focus-visible {
+          text-decoration:underline;
+        }
+        .tl-opt:focus-visible, .tl-link:focus-visible {
+          box-shadow:0 0 0 1px #33FF0066;
+        }
+
+        /* ââ Input ââââââââââââââââââââââââââââââââââââââ */
+        .term-input-row {
+          display:flex;align-items:center;gap:8px;
+          margin-top:8px;padding:0 4px;
+          font-size:15px;letter-spacing:.8px;
+          text-shadow:0 0 10px rgba(51,255,0,0.6),0 0 30px rgba(51,255,0,0.1);
+        }
+        .term-input {
+          background:none;border:none;outline:none;
+          color:#33FF00;font-family:inherit;font-size:15px;
+          letter-spacing:.8px;caret-color:#33FF00;
+          flex:1;max-width:240px;
+          text-shadow:0 0 10px rgba(51,255,0,0.6),0 0 30px rgba(51,255,0,0.1);
+        }
+        .term-input::placeholder { color:#33FF0030; }
+
+        /* ââ Footer âââââââââââââââââââââââââââââââââââââ */
+        .term-footer {
+          position:fixed;bottom:0;left:0;right:0;z-index:10;
+          background:linear-gradient(transparent,#0a0a08 30%);
+          padding:30px 32px 16px;pointer-events:none;
+        }
+        .term-footer-inner {
+          max-width:740px;margin:0 auto;
+          display:flex;justify-content:space-between;
+          font-size:10px;letter-spacing:2px;opacity:.35;
+          border-top:1px solid #33FF0033;padding-top:8px;
+        }
+
+        /* ââ Selection ââââââââââââââââââââââââââââââââââ */
+        ::selection { background:#33FF00;color:#0a0a08; }
+
+        /* ââ Mobile âââââââââââââââââââââââââââââââââââââ */
+        @media(max-width:600px) {
+          .term-scroll { padding:24px 18px 130px; }
+          .tl { font-size:14px;letter-spacing:.6px;padding:1px 4px; }
+          .tl-heading { font-size:15px; }
+          .term-input-row { font-size:14px; }
+          .term-input { font-size:14px;max-width:180px; }
+          .term-footer-hint { display:none; }
+          .term-footer-inner { font-size:8px; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function FontLoader() {
+  return <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"/>;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Terminal />);
+</script>
+</body>
+</html>
