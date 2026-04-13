@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Signal Lost | MDM Industries</title>
+<meta name="description" content="Page not found. Return to the MDM Industries terminal.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background: #0a0a08;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    color: #33FF00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-shadow: 0 0 10px rgba(51,255,0,0.6), 0 0 3px rgba(51,255,0,0.4);
+  }
+  .container { max-width: 500px; padding: 32px; text-align: center; }
+  .code { font-size: 72px; letter-spacing: 8px; color: #44FF22;
+    text-shadow: 0 0 20px rgba(51,255,0,0.8), 0 0 60px rgba(51,255,0,0.2); }
+  .msg { font-size: 16px; margin: 16px 0 8px; opacity: 0.8; }
+  .sub { font-size: 13px; opacity: 0.45; margin-bottom: 32px; }
+  .link {
+    display: inline-block; padding: 10px 28px;
+    border: 1px solid #33FF0055; color: #33FF00;
+    text-decoration: none; font-size: 14px; letter-spacing: 2px;
+    transition: all 0.2s;
+  }
+  .link:hover { background: rgba(51,255,0,0.12); color: #77FF44;
+    text-shadow: 0 0 16px rgba(51,255,0,0.8); border-color: #33FF0088; }
+  .scan {
+    position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 1px, transparent 1px, transparent 2.5px);
+    mix-blend-mode: multiply;
+  }
+  .vig {
+    position: fixed; inset: 0; pointer-events: none; z-index: 101;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.75) 100%);
+  }
+  @keyframes blink { 0%,49%{opacity:1}50%,100%{opacity:0} }
+  .cursor { animation: blink 1.06s step-end infinite; }
+  .sep { opacity: 0.25; font-size: 13px; margin: 20px 0; letter-spacing: 4px; }
+</style>
+</head>
+<body>
+  <div class="scan"></div>
+  <div class="vig"></div>
+  <div class="container">
+    <div class="code">404</div>
+    <div class="msg">SIGNAL LOST</div>
+    <div class="sub">The requested sector does not exist in this terminal.</div>
+    <div class="sep">━━━━━━━━━━━━━━━━━━━━━━</div>
+    <a href="/" class="link">RETURN TO TERMINAL<span class="cursor"> █</span></a>
+  </div>
+</body>
+</html>
